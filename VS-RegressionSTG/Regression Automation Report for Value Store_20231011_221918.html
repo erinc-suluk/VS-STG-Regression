@@ -1,0 +1,2391 @@
+
+<!DOCTYPE html>
+<html>
+
+
+<head>
+	<meta charset='utf-8' /> 
+	<meta name='description' content='' />
+	<meta name='robots' content='noodp, noydir' />
+	<meta name='viewport' content='width=device-width, initial-scale=1' />
+	<meta id="timeStampFormat" name="timeStampFormat" content='MMM d, yyyy hh:mm:ss a'/>
+	
+	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600' rel='stylesheet' type='text/css'>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+		<link href='https://cdn.rawgit.com/anshooarora/extentreports-java/6d3843c29c354373fafad29c03a1a89b7e06c374/dist/css/extent.css' type='text/css' rel='stylesheet' />
+	
+	<title>ExtentReports</title>
+
+</head>
+
+	<body class='extent standard default hide-overflow '>
+		<div id='theme-selector' alt='Click to toggle theme. To enable by default, use theme configuration.' title='Click to toggle theme. To enable by default, use theme configuration.'>
+			<span><i class='material-icons'>desktop_windows</i></span>
+		</div>
+
+<nav>
+	<div class="nav-wrapper">
+		<a href="#!" class="brand-logo blue darken-3">Extent</a>
+
+		<!-- slideout menu -->
+		<ul id='slide-out' class='side-nav fixed hide-on-med-and-down'>
+			<li class='waves-effect active'><a href='#!' view='test-view' onclick="configureView(0);chartsView('test');"><i class='material-icons'>dashboard</i></a></li>
+						<li class='waves-effect'><a href='#!' onclick="configureView(-1);chartsView('dashboard');" view='dashboard-view'><i class='material-icons'>track_changes</i></i></a></li>
+		</ul>
+
+		<!-- report name -->
+		<span class='report-name'>ExtentReports</span>
+		
+		<!-- report headline -->
+		<span class='report-headline'></span>
+
+		<!-- nav-right -->
+		<ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
+			<li>
+                <a href='#!'>
+                    <span class='label suite-start-time blue darken-3'>Oct 11, 2023 09:59:13 PM</span>
+				</a>
+			</li>
+			<li>
+                <a href='#!'>
+                    <span class='label blue darken-3'>v3.0.6</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+		<!-- container -->
+		<div class='container'>
+
+<div id='test-view' class='view'>
+				
+	<section id='controls'>
+		<div class='controls grey lighten-4'>
+			<!-- test toggle -->
+			<div class='chip transparent'>
+				<a class='dropdown-button tests-toggle' data-activates='tests-toggle' data-constrainwidth='true' data-beloworigin='true' data-hover='true' href='#'>
+					<i class='material-icons'>warning</i> Status
+				</a>
+				<ul id='tests-toggle' class='dropdown-content'>
+											<li status='pass'><a href='#!'>Pass <i class='material-icons green-text'>check_circle</i></a></li>
+						<li status='fail'><a href='#!'>Fail <i class='material-icons red-text'>cancel</i></a></li>
+					<li class='divider'></li>
+					<li status='clear' clear='true'><a href='#!'>Clear Filters <i class='material-icons'>clear</i></a></li>
+				</ul>
+			</div>
+			<!-- test toggle -->
+
+			<!-- category toggle -->
+			<!-- category toggle -->
+
+			<!-- clear filters -->
+			<div class='chip transparent hide'>
+				<a class='' id='clear-filters' alt='Clear Filters' title='Clear Filters'>
+					<i class='material-icons'>close</i> Clear
+				</a>
+			</div>
+			<!-- clear filters -->
+
+			<!-- enable dashboard -->
+			<div id='toggle-test-view-charts' class='chip transparent'>
+				<a class='pink-text' id='enable-dashboard' alt='Enable Dashboard' title='Enable Dashboard'>
+					<i class='material-icons'>track_changes</i> Dashboard
+				</a>
+			</div>
+			<!-- enable dashboard -->
+
+			<!-- search -->
+			<div class='chip transparent' alt='Search Tests' title='Search Tests'>
+				<a href="#" class='search-div'>
+					<i class='material-icons'>search</i> Search
+				</a>
+
+				<div class='input-field left hide'>
+					<input id='search-tests' type='text' class='validate browser-default' placeholder='Search Tests...'>
+				</div>
+				
+			</div>
+			<!-- search -->
+		</div>
+	</section>
+
+
+<div id='test-view-charts' class='subview-full'>
+	<div id='charts-row' class='row nm-v nm-h'>
+		<div class='col s12 m6 l6 np-h'>
+			<div class='card-panel nm-v'>
+				<div class='left panel-name'>Tests</div>
+				<div class='chart-box'>
+					<canvas id='parent-analysis' width='100' height='80'></canvas>
+				</div>
+				<div class='block text-small'>
+					<span class='tooltipped' data-position='top' data-tooltip='91.892%'><span class='strong'>34</span> test(s) passed</span>
+				</div>
+				<div class='block text-small'>
+					<span class='strong tooltipped' data-position='top' data-tooltip='8.108%'>3</span> test(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
+				</div>
+			</div>
+		</div>
+		
+		<div class='col s12 m6 l6 np-h'>
+			<div class='card-panel nm-v'>
+				<div class='left panel-name'>Steps</div>
+				<div class='chart-box'>
+					<canvas id='child-analysis' width='100' height='80'></canvas>
+				</div>
+				<div class='block text-small'>
+					<span class='tooltipped' data-position='top' data-tooltip='15.714%'><span class='strong'>33</span> step(s) passed</span>
+				</div>
+				<div class='block text-small'>
+					<span class='strong tooltipped' data-position='top' data-tooltip='1.429%'>3</span> step(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='82.857%'>174</span> others
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</div>
+
+	<div class='subview-left left'>
+		
+		<div class='view-summary'>
+			<h5>Tests</h5>
+			<ul id='test-collection' class='test-collection'>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='1'>
+					<div class='test-heading'>
+						<span class='test-name'>To verify that the column 2-4 link titles are sorted by alphabetical order.</span>
+						<span class='test-time'>Oct 11, 2023 09:59:14 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Oct 11, 2023 09:59:14 PM</span>
+	<span class='label end-time'>Oct 11, 2023 09:59:35 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 21s+73ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>9:59:23 PM</td>
+					<td class='step-details'>Wait for quick links icon visibility</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>9:59:29 PM</td>
+					<td class='step-details'>Verified quick links icon is displayed</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>9:59:31 PM</td>
+					<td class='step-details'>Clicked on quick links icon</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:59:35 PM</td>
+					<td class='step-details'>Test passed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='2'>
+					<div class='test-heading'>
+						<span class='test-name'>To verify quick link item opens in a new tab if it's an external page.To verify that the quick link item opens in the current window if it's an internal value store page.</span>
+						<span class='test-time'>Oct 11, 2023 09:59:35 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Oct 11, 2023 09:59:35 PM</span>
+	<span class='label end-time'>Oct 11, 2023 09:59:59 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 23s+335ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>9:59:44 PM</td>
+					<td class='step-details'>Wait for quick links icon visibility</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>9:59:48 PM</td>
+					<td class='step-details'>Verified quick links icon is displayed</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>9:59:50 PM</td>
+					<td class='step-details'>Clicked on quick links icon</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>9:59:56 PM</td>
+					<td class='step-details'>Verified element opened the same tab</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:59:59 PM</td>
+					<td class='step-details'>Test passed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  fail' status='fail' bdd='false' test-id='3'>
+					<div class='test-heading'>
+						<span class='test-name'>To verify that author can configure the media player on value store content page template.To verify that the video will automatically start to play if the 'auto play' option is selected by the author.</span>
+						<span class='test-time'>Oct 11, 2023 09:59:59 PM</span>
+						<span class='test-status right fail'>fail</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Oct 11, 2023 09:59:59 PM</span>
+	<span class='label end-time'>Oct 11, 2023 10:00:49 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 49s+886ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>10:00:49 PM</td>
+					<td class='step-details'>Test failed: Expected condition failed: waiting for visibility of Proxy element for: DefaultElementLocator 'By.xpath: //input[@name='./autoPlay']' (tried for 30 second(s) with 500 milliseconds interval)<img data-featherlight='screenshots/To verify that author can configure the media player on value store content page template.To verify that the video will automatically start to play if the 'auto play' option is selected by the author..png' width='10%' src='screenshots/To verify that author can configure the media player on value store content page template.To verify that the video will automatically start to play if the 'auto play' option is selected by the author..png' data-src='screenshots/To verify that author can configure the media player on value store content page template.To verify that the video will automatically start to play if the 'auto play' option is selected by the author..png'></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='4'>
+					<div class='test-heading'>
+						<span class='test-name'>To verify that the top navigation icon is highlighted with a pink outline when rolled hover & clicked it.</span>
+						<span class='test-time'>Oct 11, 2023 10:00:50 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Oct 11, 2023 10:00:50 PM</span>
+	<span class='label end-time'>Oct 11, 2023 10:01:06 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 16s+369ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:00:59 PM</td>
+					<td class='step-details'>Wait for fav navigation visibility</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:01:06 PM</td>
+					<td class='step-details'>Test passed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='5'>
+					<div class='test-heading'>
+						<span class='test-name'>To verify that hover effect on the territory selector.</span>
+						<span class='test-time'>Oct 11, 2023 10:01:07 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Oct 11, 2023 10:01:07 PM</span>
+	<span class='label end-time'>Oct 11, 2023 10:01:22 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 15s+598ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:01:15 PM</td>
+					<td class='step-details'>Wait for fav navigation visibility</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:01:22 PM</td>
+					<td class='step-details'>Test passed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='6'>
+					<div class='test-heading'>
+						<span class='test-name'>To verify that when user clicks on the PwC button, It should open in a new tab.</span>
+						<span class='test-time'>Oct 11, 2023 10:01:23 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Oct 11, 2023 10:01:23 PM</span>
+	<span class='label end-time'>Oct 11, 2023 10:01:43 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 20s+333ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:01:31 PM</td>
+					<td class='step-details'>Wait for logo visibility</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:01:40 PM</td>
+					<td class='step-details'>Verified element opened the same tab</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:01:43 PM</td>
+					<td class='step-details'>Test passed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='7'>
+					<div class='test-heading'>
+						<span class='test-name'>To verify that all value store users can see the Related articles.To verify that click on the Related article title to open the content page.</span>
+						<span class='test-time'>Oct 11, 2023 10:01:44 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Oct 11, 2023 10:01:44 PM</span>
+	<span class='label end-time'>Oct 11, 2023 10:02:02 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 17s+620ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:01:53 PM</td>
+					<td class='step-details'>Wait for visibility of first asset share icon</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:01:55 PM</td>
+					<td class='step-details'>Scroll to what others viewing title</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:01:57 PM</td>
+					<td class='step-details'>Verify that whatOthersTitle is displayed</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:01:59 PM</td>
+					<td class='step-details'>Wait for visibility of first asset share icon</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:02:02 PM</td>
+					<td class='step-details'>Test passed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='8'>
+					<div class='test-heading'>
+						<span class='test-name'>To verify that the same Content template & components are used for the MX content that currently exists for the US.</span>
+						<span class='test-time'>Oct 11, 2023 10:02:02 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Oct 11, 2023 10:02:02 PM</span>
+	<span class='label end-time'>Oct 11, 2023 10:02:18 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 15s+69ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:02:18 PM</td>
+					<td class='step-details'>Test passed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='9'>
+					<div class='test-heading'>
+						<span class='test-name'>To verify that given target possible URLs (such as google drive links, VS content, pdf) should open from the topic landing page key asset bar.To verify that click on a link that opens the asset in a new tab.</span>
+						<span class='test-time'>Oct 11, 2023 10:02:18 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Oct 11, 2023 10:02:18 PM</span>
+	<span class='label end-time'>Oct 11, 2023 10:02:35 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 17s+173ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:02:28 PM</td>
+					<td class='step-details'>Verified topic page title is displayed</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:02:32 PM</td>
+					<td class='step-details'>Verified element opened the same tab</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:02:35 PM</td>
+					<td class='step-details'>Test passed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='10'>
+					<div class='test-heading'>
+						<span class='test-name'>To verify that feed is system populated.</span>
+						<span class='test-time'>Oct 11, 2023 10:02:36 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Oct 11, 2023 10:02:36 PM</span>
+	<span class='label end-time'>Oct 11, 2023 10:02:49 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 13s+11ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:02:46 PM</td>
+					<td class='step-details'>Verified topic page title is displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:02:49 PM</td>
+					<td class='step-details'>Test passed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='11'>
+					<div class='test-heading'>
+						<span class='test-name'>To verify that same functionality should available for MX territory footer.</span>
+						<span class='test-time'>Oct 11, 2023 10:02:49 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Oct 11, 2023 10:02:49 PM</span>
+	<span class='label end-time'>Oct 11, 2023 10:03:10 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 20s+470ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:03:10 PM</td>
+					<td class='step-details'>Test passed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='12'>
+					<div class='test-heading'>
+						<span class='test-name'>To verify that an image and quote text is defined by the author.</span>
+						<span class='test-time'>Oct 11, 2023 10:03:10 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Oct 11, 2023 10:03:10 PM</span>
+	<span class='label end-time'>Oct 11, 2023 10:03:33 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 22s+569ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:03:33 PM</td>
+					<td class='step-details'>Test passed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='13'>
+					<div class='test-heading'>
+						<span class='test-name'>To verify that content manager should get report of all the VS pages for a given folder path.</span>
+						<span class='test-time'>Oct 11, 2023 10:03:34 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Oct 11, 2023 10:03:34 PM</span>
+	<span class='label end-time'>Oct 11, 2023 10:03:58 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 24s+338ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:03:58 PM</td>
+					<td class='step-details'>Test passed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='14'>
+					<div class='test-heading'>
+						<span class='test-name'>To verify that backup articles should be set up by the system, not manually maintained by the authorr.To verify that mandatory image property on the content page, so that it is populated on the Homepage articles</span>
+						<span class='test-time'>Oct 11, 2023 10:03:58 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Oct 11, 2023 10:03:58 PM</span>
+	<span class='label end-time'>Oct 11, 2023 10:05:11 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 1m 12s+977ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:04:07 PM</td>
+					<td class='step-details'>Wait for content page visibility and click on it</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:04:11 PM</td>
+					<td class='step-details'>Click on Next button</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:04:19 PM</td>
+					<td class='step-details'>Scroll to Off time element</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:04:26 PM</td>
+					<td class='step-details'>Click on Primary 1 tag and select tags</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:04:31 PM</td>
+					<td class='step-details'>Click on Primary 2 tag and select tags</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:04:36 PM</td>
+					<td class='step-details'>Click on Primary 3 tag and select tags</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:04:50 PM</td>
+					<td class='step-details'>Scrolled to publish date and cleared it</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:04:52 PM</td>
+					<td class='step-details'>Enter the today's date</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:05:11 PM</td>
+					<td class='step-details'>Test passed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='15'>
+					<div class='test-heading'>
+						<span class='test-name'>To verify that author can configure up to 4 recommended articles that will display on the page when there are no filter results.</span>
+						<span class='test-time'>Oct 11, 2023 10:05:12 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Oct 11, 2023 10:05:12 PM</span>
+	<span class='label end-time'>Oct 11, 2023 10:05:32 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 19s+502ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:05:32 PM</td>
+					<td class='step-details'>Test passed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='16'>
+					<div class='test-heading'>
+						<span class='test-name'>Verify that, users can use the favorite icon to add or remove their favorite pagesTo verify that favorites page displays the user's saced favorite contentsTo verify that favorite pages can be added and removed by clicking on the favorite iconTo verify that favorite page icon leads the user to their favorites pageTo verify that when there is 0 favorite content, display a no favorites pageTo verify that favorite page icon turns pink to indicate the page has been added to favoritesTo verify that favorite page icon is highlighted when user is on the favorites pageTo verify that article tiles displayed on the favorite page follow the same functionality as the homepage Top10 tiles</span>
+						<span class='test-time'>Oct 11, 2023 10:05:32 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Oct 11, 2023 10:05:32 PM</span>
+	<span class='label end-time'>Oct 11, 2023 10:06:15 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 42s+666ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:05:41 PM</td>
+					<td class='step-details'>Wait for page to load</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:05:42 PM</td>
+					<td class='step-details'>Wait for fav icon's visibility</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:05:45 PM</td>
+					<td class='step-details'>Verified fav icon is displayed</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:05:54 PM</td>
+					<td class='step-details'>Added 2 elements to the favorites</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:06:01 PM</td>
+					<td class='step-details'>Clicked on fav icon link</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:06:01 PM</td>
+					<td class='step-details'>Wait for fav header's visibility</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:06:06 PM</td>
+					<td class='step-details'>Verified fav header's visibility</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:06:06 PM</td>
+					<td class='step-details'>Verified All text values found in second list.</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:06:12 PM</td>
+					<td class='step-details'>Removed all favs on favs page</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:06:12 PM</td>
+					<td class='step-details'>Verified no result heading is displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:06:15 PM</td>
+					<td class='step-details'>WEB_159 passed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='17'>
+					<div class='test-heading'>
+						<span class='test-name'>To verify that the flag is removed once the content publish date is beyond 30 days from the calendar dateTo verify that system looks at the publish date field and applies New flag to content that is 30 day window from the current calendar dateTo verify that author can enter a new expiration date when they republish an expired page</span>
+						<span class='test-time'>Oct 11, 2023 10:06:15 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Oct 11, 2023 10:06:15 PM</span>
+	<span class='label end-time'>Oct 11, 2023 10:06:24 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 8s+462ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:06:24 PM</td>
+					<td class='step-details'>Wait for page to load</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:06:24 PM</td>
+					<td class='step-details'>Go to authoring page and click page info button and open properties</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='18'>
+					<div class='test-heading'>
+						<span class='test-name'>To verify that users can favorite MX pages and access those favorites on Mexico sites</span>
+						<span class='test-time'>Oct 11, 2023 10:07:06 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Oct 11, 2023 10:07:06 PM</span>
+	<span class='label end-time'>Oct 11, 2023 10:07:43 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 37s+661ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:07:15 PM</td>
+					<td class='step-details'>Wait for page to load</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:07:15 PM</td>
+					<td class='step-details'>Wait for territory menu's visibility</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:07:18 PM</td>
+					<td class='step-details'>Clicked on territory menu</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:07:18 PM</td>
+					<td class='step-details'>Clicked on mexico</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:07:26 PM</td>
+					<td class='step-details'>Added 2 elements to the favorites</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:07:33 PM</td>
+					<td class='step-details'>Clicked on fav icon link</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:07:34 PM</td>
+					<td class='step-details'>Wait for fav header's visibility</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:07:34 PM</td>
+					<td class='step-details'>Verified fav header's visibility</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:07:34 PM</td>
+					<td class='step-details'>Verified All text values found in second list.</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:07:40 PM</td>
+					<td class='step-details'>Removed all favs on favs page</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:07:43 PM</td>
+					<td class='step-details'>Verified no result heading is displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:07:43 PM</td>
+					<td class='step-details'>WEB_161 passed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='19'>
+					<div class='test-heading'>
+						<span class='test-name'>To verify that user should be able to filter & open the content pages on Mexico sitesTo verify that searching and filtering results are constrained to the respective territory</span>
+						<span class='test-time'>Oct 11, 2023 10:07:44 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Oct 11, 2023 10:07:44 PM</span>
+	<span class='label end-time'>Oct 11, 2023 10:08:07 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 22s+974ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:07:53 PM</td>
+					<td class='step-details'>Wait for page to load</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:07:53 PM</td>
+					<td class='step-details'>Wait for territory menu's visibility</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:07:55 PM</td>
+					<td class='step-details'>Clicked on territory menu</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:07:55 PM</td>
+					<td class='step-details'>Clicked on mexico</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:07:58 PM</td>
+					<td class='step-details'>Clicked on select topic</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:07:58 PM</td>
+					<td class='step-details'>Wait for deals checkbox visibility and clicked on it</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:08:01 PM</td>
+					<td class='step-details'>Clicked on select topic</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:08:04 PM</td>
+					<td class='step-details'>Clicked on article title</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:08:07 PM</td>
+					<td class='step-details'>WEB_162 passed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='20'>
+					<div class='test-heading'>
+						<span class='test-name'>To verify that user can click on the territory selector to open the dropdownTo verify that any user can toggle between the US and Mexico</span>
+						<span class='test-time'>Oct 11, 2023 10:08:08 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Oct 11, 2023 10:08:08 PM</span>
+	<span class='label end-time'>Oct 11, 2023 10:08:51 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 43s+451ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:08:16 PM</td>
+					<td class='step-details'>Wait for page to load</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:08:16 PM</td>
+					<td class='step-details'>Wait for logo visibility</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:08:21 PM</td>
+					<td class='step-details'>Verified territory menu is displayed</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:08:23 PM</td>
+					<td class='step-details'>Clicked on territory menu</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:08:26 PM</td>
+					<td class='step-details'>Clicked on Mexico</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:08:29 PM</td>
+					<td class='step-details'>Wait for visibility of territory menu</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:08:31 PM</td>
+					<td class='step-details'>Verified Mexico is selected</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:08:31 PM</td>
+					<td class='step-details'>Clicked on territory menu</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:08:36 PM</td>
+					<td class='step-details'>Clicked on Global</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:08:39 PM</td>
+					<td class='step-details'>Wait for visibility of territory menu</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:08:41 PM</td>
+					<td class='step-details'>Verified Global is selected</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:08:42 PM</td>
+					<td class='step-details'>Clicked on territory menu</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:08:45 PM</td>
+					<td class='step-details'>Clicked on US</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:08:48 PM</td>
+					<td class='step-details'>Wait for visibility of territory menu</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:08:48 PM</td>
+					<td class='step-details'>Verified United States is selected</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:08:51 PM</td>
+					<td class='step-details'>WEB_163 passed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='21'>
+					<div class='test-heading'>
+						<span class='test-name'>To verify that there should be consistent page header with the ability to return to the HomepageTo verify that this Global footer should be persistent on all pages</span>
+						<span class='test-time'>Oct 11, 2023 10:08:52 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Oct 11, 2023 10:08:52 PM</span>
+	<span class='label end-time'>Oct 11, 2023 10:09:26 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 34s+807ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:09:00 PM</td>
+					<td class='step-details'>Wait for page to load</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:09:00 PM</td>
+					<td class='step-details'>Wait for visibility of header</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:09:06 PM</td>
+					<td class='step-details'>Verified the header is displayed</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:09:09 PM</td>
+					<td class='step-details'>Scroll to footer</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:09:09 PM</td>
+					<td class='step-details'>Wait for visibility of footer</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:09:09 PM</td>
+					<td class='step-details'>Verified the footer is displayed</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:09:12 PM</td>
+					<td class='step-details'>Go to the homepage</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:09:13 PM</td>
+					<td class='step-details'>Wait for page to load</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:09:13 PM</td>
+					<td class='step-details'>Wait for visibility of header</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:09:13 PM</td>
+					<td class='step-details'>Verified the header is displayed</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:09:16 PM</td>
+					<td class='step-details'>Scroll to footer</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:09:16 PM</td>
+					<td class='step-details'>Wait for visibility of footer</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:09:16 PM</td>
+					<td class='step-details'>Verified the footer is displayed</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:09:19 PM</td>
+					<td class='step-details'>Go to the topic landing page</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:09:20 PM</td>
+					<td class='step-details'>Wait for page to load</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:09:20 PM</td>
+					<td class='step-details'>Wait for visibility of header</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:09:20 PM</td>
+					<td class='step-details'>Verified the header is displayed</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:09:23 PM</td>
+					<td class='step-details'>Scroll to footer</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:09:23 PM</td>
+					<td class='step-details'>Wait for visibility of footer</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:09:23 PM</td>
+					<td class='step-details'>Verified the footer is displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:09:26 PM</td>
+					<td class='step-details'>WEB_164 passed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='22'>
+					<div class='test-heading'>
+						<span class='test-name'>To verify that homepage should continue to function as after it's shared & user opens with the pre-filtered resultsTo verify that user who receive the link and opens the link should be brought to the homepage with the pre-filtered results</span>
+						<span class='test-time'>Oct 11, 2023 10:09:27 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Oct 11, 2023 10:09:27 PM</span>
+	<span class='label end-time'>Oct 11, 2023 10:10:03 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 35s+601ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:09:35 PM</td>
+					<td class='step-details'>Wait for page to load</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:09:36 PM</td>
+					<td class='step-details'>Wait for logo visibility</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:09:40 PM</td>
+					<td class='step-details'>Verified the first asset is displayed</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:09:42 PM</td>
+					<td class='step-details'>Clicked on it</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:09:45 PM</td>
+					<td class='step-details'>Wait for deals checkbox visibility and clicked on it</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:09:48 PM</td>
+					<td class='step-details'>Clicked on select topic</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:09:48 PM</td>
+					<td class='step-details'>Wait for page to load</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:09:51 PM</td>
+					<td class='step-details'>Getting the current url and copy-paste it</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:09:56 PM</td>
+					<td class='step-details'>Verified Copy-paste action was successful</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:10:03 PM</td>
+					<td class='step-details'>WEB_165 passed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='23'>
+					<div class='test-heading'>
+						<span class='test-name'>To verify that user will be able to sort the tiles by Oldest to NewestTo verify that default sorting of the article tiles is by the most recent published date</span>
+						<span class='test-time'>Oct 11, 2023 10:10:03 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Oct 11, 2023 10:10:03 PM</span>
+	<span class='label end-time'>Oct 11, 2023 10:10:53 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 50s+304ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:10:12 PM</td>
+					<td class='step-details'>Wait for page to load</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:10:12 PM</td>
+					<td class='step-details'>Wait for fav icon's visibility</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:10:18 PM</td>
+					<td class='step-details'>Verified fav icon is displayed</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:10:26 PM</td>
+					<td class='step-details'>Added 2 elements to the favorites</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:10:33 PM</td>
+					<td class='step-details'>Clicked on fav icon link</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:10:33 PM</td>
+					<td class='step-details'>Wait for fav header's visibility</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:10:34 PM</td>
+					<td class='step-details'>Verified fav header's visibility</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:10:34 PM</td>
+					<td class='step-details'>Stored original order</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:10:36 PM</td>
+					<td class='step-details'>Clicked on filter dropdown</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:10:38 PM</td>
+					<td class='step-details'>Clicked on oldest to newest</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:10:43 PM</td>
+					<td class='step-details'>Stored new order</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:10:45 PM</td>
+					<td class='step-details'>Verified order has changed</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:10:50 PM</td>
+					<td class='step-details'>Removed all favs on favs page</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:10:50 PM</td>
+					<td class='step-details'>Verified no result heading is displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:10:53 PM</td>
+					<td class='step-details'>WEB_166 passed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='24'>
+					<div class='test-heading'>
+						<span class='test-name'>To verify that the heart icon gets filled on the mouse hover or after clicking it</span>
+						<span class='test-time'>Oct 11, 2023 10:10:54 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Oct 11, 2023 10:10:54 PM</span>
+	<span class='label end-time'>Oct 11, 2023 10:11:21 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 27s+526ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:11:02 PM</td>
+					<td class='step-details'>Wait for page to load</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:11:02 PM</td>
+					<td class='step-details'>Wait for logo visibility</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:11:13 PM</td>
+					<td class='step-details'>Verified the color of the checkbox has changed after moving the cursor on it</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:11:19 PM</td>
+					<td class='step-details'>Verified the color of the checkbox has changed after clicking on it</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:11:21 PM</td>
+					<td class='step-details'>WEB_167 passed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='25'>
+					<div class='test-heading'>
+						<span class='test-name'>To verify that homepage hyperlink and the mailto link should turn rose on Not found pahe when hover on itTo verify that user should get 404 not found error when user load VS page and that content does not existTo verify that clicking the 'Value Store home page' hyperlink will bring user to the homepage on Not found page</span>
+						<span class='test-time'>Oct 11, 2023 10:11:22 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Oct 11, 2023 10:11:22 PM</span>
+	<span class='label end-time'>Oct 11, 2023 10:11:42 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 20s+271ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:11:37 PM</td>
+					<td class='step-details'>Verified all content title's border bottom are changing when move the cursor</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:11:42 PM</td>
+					<td class='step-details'>WEB_168 passed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='26'>
+					<div class='test-heading'>
+						<span class='test-name'>To verify that 'Not found' page applies to both US and Mexico sites</span>
+						<span class='test-time'>Oct 11, 2023 10:11:43 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Oct 11, 2023 10:11:43 PM</span>
+	<span class='label end-time'>Oct 11, 2023 10:12:03 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 20s+160ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:12:03 PM</td>
+					<td class='step-details'>WEB_169 passed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='27'>
+					<div class='test-heading'>
+						<span class='test-name'>To verify that 'NEW' flag translation to Spanish in Mexico site for all components that have applied with the 'NEW' flag</span>
+						<span class='test-time'>Oct 11, 2023 10:12:03 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Oct 11, 2023 10:12:03 PM</span>
+	<span class='label end-time'>Oct 11, 2023 10:12:20 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 16s+765ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:12:12 PM</td>
+					<td class='step-details'>Wait for page to load</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:12:12 PM</td>
+					<td class='step-details'>Wait for territory menu's visibility</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:12:14 PM</td>
+					<td class='step-details'>Clicked on territory menu</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:12:14 PM</td>
+					<td class='step-details'>Clicked on mexico</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:12:20 PM</td>
+					<td class='step-details'>WEB_170 passed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='28'>
+					<div class='test-heading'>
+						<span class='test-name'>To verify that, Trending term should be based on the local definition & seperate list of terms for the US & MX</span>
+						<span class='test-time'>Oct 11, 2023 10:12:21 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Oct 11, 2023 10:12:21 PM</span>
+	<span class='label end-time'>Oct 11, 2023 10:13:00 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 38s+760ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:12:29 PM</td>
+					<td class='step-details'>Wait for page to load</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:12:29 PM</td>
+					<td class='step-details'>Wait logo visibility</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:12:36 PM</td>
+					<td class='step-details'>Clicked on search button</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:12:40 PM</td>
+					<td class='step-details'>Wait for trending search visibility</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:12:44 PM</td>
+					<td class='step-details'>Clicked on territory menu</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:12:48 PM</td>
+					<td class='step-details'>Clicked on Mexico</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:12:48 PM</td>
+					<td class='step-details'>Wait for visibility of territory menu</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:12:48 PM</td>
+					<td class='step-details'>Clicked on search button</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:12:53 PM</td>
+					<td class='step-details'>Wait for trending search visibility</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:12:55 PM</td>
+					<td class='step-details'>Verified trending search is displayed</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:12:57 PM</td>
+					<td class='step-details'>Verified first trending suggestion</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:13:00 PM</td>
+					<td class='step-details'>WEB_171 passed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  fail' status='fail' bdd='false' test-id='29'>
+					<div class='test-heading'>
+						<span class='test-name'>To verify that the page gets automatically removed from the user's favorites when a content page is expired or unpublished</span>
+						<span class='test-time'>Oct 11, 2023 10:13:00 PM</span>
+						<span class='test-status right fail'>fail</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Oct 11, 2023 10:13:00 PM</span>
+	<span class='label end-time'>Oct 11, 2023 10:13:32 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 31s+877ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:13:09 PM</td>
+					<td class='step-details'>Wait for logo visibility</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:13:11 PM</td>
+					<td class='step-details'>Clicked on search button</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:13:11 PM</td>
+					<td class='step-details'>Clicked on search field and perform enter</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:13:13 PM</td>
+					<td class='step-details'>Wait for page to load</td>
+				</tr>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>10:13:32 PM</td>
+					<td class='step-details'>Test failed: Expected condition failed: waiting for visibility of Proxy element for: DefaultElementLocator 'By.xpath: //a[contains(@class, 'fav-icon')]' (tried for 10 second(s) with 500 milliseconds interval)<img data-featherlight='screenshots/To verify that the page gets automatically removed from the user's favorites when a content page is expired or unpublished.png' width='10%' src='screenshots/To verify that the page gets automatically removed from the user's favorites when a content page is expired or unpublished.png' data-src='screenshots/To verify that the page gets automatically removed from the user's favorites when a content page is expired or unpublished.png'></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='30'>
+					<div class='test-heading'>
+						<span class='test-name'>To verify that, Users can click on a recent term to trigger the search directly and will be presented with the search results pageTo verify that, user's recent searches will be captured regardless of the territory & it will be one list containing user's searches from any site</span>
+						<span class='test-time'>Oct 11, 2023 10:13:33 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Oct 11, 2023 10:13:33 PM</span>
+	<span class='label end-time'>Oct 11, 2023 10:13:55 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 21s+971ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:13:41 PM</td>
+					<td class='step-details'>Wait for logo visibility</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:13:43 PM</td>
+					<td class='step-details'>Clicked on search button</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:13:46 PM</td>
+					<td class='step-details'>Wait for page to load</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:13:51 PM</td>
+					<td class='step-details'>Clicked on territory menu</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:13:52 PM</td>
+					<td class='step-details'>Clicked on Mexico</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:13:52 PM</td>
+					<td class='step-details'>Wait for visibility of search button</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:13:52 PM</td>
+					<td class='step-details'>Clicked on search button</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:13:55 PM</td>
+					<td class='step-details'>WEB_173 passed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='31'>
+					<div class='test-heading'>
+						<span class='test-name'>To verify that, System should remove any search terms that yield no result</span>
+						<span class='test-time'>Oct 11, 2023 10:13:55 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Oct 11, 2023 10:13:55 PM</span>
+	<span class='label end-time'>Oct 11, 2023 10:14:28 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 32s+157ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:14:04 PM</td>
+					<td class='step-details'>Wait for logo visibility</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:14:06 PM</td>
+					<td class='step-details'>Clicked on search button</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:14:08 PM</td>
+					<td class='step-details'>Wait for page to load</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:14:12 PM</td>
+					<td class='step-details'>Clicked on search button</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:14:16 PM</td>
+					<td class='step-details'>Wait for page to load</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:14:28 PM</td>
+					<td class='step-details'>WEB_174 passed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  fail' status='fail' bdd='false' test-id='32'>
+					<div class='test-heading'>
+						<span class='test-name'>To verify that pages should be excluded that are checked with 'Hide page from Site Search</span>
+						<span class='test-time'>Oct 11, 2023 10:14:28 PM</span>
+						<span class='test-status right fail'>fail</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Oct 11, 2023 10:14:28 PM</span>
+	<span class='label end-time'>Oct 11, 2023 10:14:34 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 5s+507ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>10:14:34 PM</td>
+					<td class='step-details'>Test failed: no such element: Unable to locate element: {"method":"xpath","selector":"//coral-icon[@icon='properties']"}
+  (Session info: chrome=117.0.5938.150)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'GX-ZU2WEBDWV362', ip: '10.186.122.220', os.name: 'Windows Server 2016', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.5'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 117.0.5938.150, chrome: {chromedriverVersion: 116.0.5845.96 (1a3918166880..., userDataDir: C:\Users\GLBL_RDP_USER_01\A...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:8534}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: a6ae52f11425bf493ed5a6ffdbf20a54
+*** Element info: {Using=xpath, value=//coral-icon[@icon='properties']}<img data-featherlight='screenshots/To verify that pages should be excluded that are checked with 'Hide page from Site Search.png' width='10%' src='screenshots/To verify that pages should be excluded that are checked with 'Hide page from Site Search.png' data-src='screenshots/To verify that pages should be excluded that are checked with 'Hide page from Site Search.png'></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='33'>
+					<div class='test-heading'>
+						<span class='test-name'>To verify that the Accordion's first Item(title and text) per Heading Title should expand and be visible by defaultTo verify that author should manually configure content area section</span>
+						<span class='test-time'>Oct 11, 2023 10:14:34 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Oct 11, 2023 10:14:34 PM</span>
+	<span class='label end-time'>Oct 11, 2023 10:15:27 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 52s+657ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:14:42 PM</td>
+					<td class='step-details'>Wait for page to load</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:14:42 PM</td>
+					<td class='step-details'>Wait for edit button visibility and clicked on it</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:14:48 PM</td>
+					<td class='step-details'>Clicked on edit accordion</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:14:51 PM</td>
+					<td class='step-details'>Clicked on configure</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:14:54 PM</td>
+					<td class='step-details'>Wait for pro tab visibility and clicked on it</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:14:58 PM</td>
+					<td class='step-details'>Check if single checkbox is selected</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:15:00 PM</td>
+					<td class='step-details'>Clicked on expanded items</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:15:02 PM</td>
+					<td class='step-details'>Clicked on CEO</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:15:04 PM</td>
+					<td class='step-details'>Clicked on done button</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:15:11 PM</td>
+					<td class='step-details'>Check if CEO text is not displayed</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:15:13 PM</td>
+					<td class='step-details'>Check if CFO text is displayed</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:15:15 PM</td>
+					<td class='step-details'>Wait for first accordion button is clickable and clicked on it</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:15:17 PM</td>
+					<td class='step-details'>Check if CEO text is displayed</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:15:19 PM</td>
+					<td class='step-details'>Check if CFO text is not displayed</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:15:19 PM</td>
+					<td class='step-details'>Wait for second accordion button is clickable and clicked on it</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:15:22 PM</td>
+					<td class='step-details'>Check if CEO text is not displayed</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:15:24 PM</td>
+					<td class='step-details'>Check if CFO text is displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:15:27 PM</td>
+					<td class='step-details'>WEB_176 passed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='34'>
+					<div class='test-heading'>
+						<span class='test-name'>To verify that Global territory is added to the territory selector/ To verify that all users are able to switch between territories using the territory selector/ To verify that Global territory will have no GMO hearts, and no favorite page within Global site/ To verify that Global territory will NOT have favorites option</span>
+						<span class='test-time'>Oct 11, 2023 10:15:27 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Oct 11, 2023 10:15:27 PM</span>
+	<span class='label end-time'>Oct 11, 2023 10:15:58 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 30s+945ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:15:37 PM</td>
+					<td class='step-details'>Wait for logo visibility</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:15:37 PM</td>
+					<td class='step-details'>Clicked on territory menu</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:15:38 PM</td>
+					<td class='step-details'>Verified global is displayed</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:15:40 PM</td>
+					<td class='step-details'>Clicked on Global</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:15:48 PM</td>
+					<td class='step-details'>Verified no fav header is displayed</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:15:55 PM</td>
+					<td class='step-details'>Verified no fav icon is displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:15:58 PM</td>
+					<td class='step-details'>WEB_177 passed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='35'>
+					<div class='test-heading'>
+						<span class='test-name'>To verify that author is able to select url from a Value Store pages in the Enablers component</span>
+						<span class='test-time'>Oct 11, 2023 10:15:59 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Oct 11, 2023 10:15:59 PM</span>
+	<span class='label end-time'>Oct 11, 2023 10:16:34 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 35s+512ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:16:34 PM</td>
+					<td class='step-details'>WEB_178 passed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='36'>
+					<div class='test-heading'>
+						<span class='test-name'>To verify that this helpful asset section should contain links that point to helpful reference material both internal and external to PwC</span>
+						<span class='test-time'>Oct 11, 2023 10:16:35 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Oct 11, 2023 10:16:35 PM</span>
+	<span class='label end-time'>Oct 11, 2023 10:16:49 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 13s+982ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:16:49 PM</td>
+					<td class='step-details'>WEB_185 passed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='37'>
+					<div class='test-heading'>
+						<span class='test-name'>To verify that this helpful asset section should contain links that point to helpful reference material both internal and external to PwC</span>
+						<span class='test-time'>Oct 11, 2023 10:16:50 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Oct 11, 2023 10:16:50 PM</span>
+	<span class='label end-time'>Oct 11, 2023 10:17:04 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 14s+783ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:17:04 PM</td>
+					<td class='step-details'>WEB_186 passed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- subview left -->
+
+	<div class='subview-right left'>
+		<div class='view-summary'>
+			<h5 class='test-name'></h5>
+
+			<div id='step-filters' class="right">
+				<span class="blue-text" status="info" alt="info" title="info"><i class="material-icons">info_outline</i></span>
+				<span class="green-text" status="pass" alt="pass" title="pass"><i class="material-icons">check_circle</i></span>
+				<span class="red-text" status="fail" alt="fail" title="fail"><i class="material-icons">cancel</i></span>
+				<span class="red-text text-darken-4" status="fatal" alt="fatal" title="fatal"><i class="material-icons">cancel</i></span>
+				<span class="pink-text text-lighten-1" status="error" alt="error" title="error"><i class="material-icons">error</i></span>
+				<span class="orange-text" alt="warning" status="warning" title="warning"><i class="material-icons">warning</i></span>
+				<span class="teal-text" status="skip" alt="skip" title="skip"><i class="material-icons">redo</i></span>
+				<span status="clear" alt="Clear filters" title="Clear filters"><i class="material-icons">clear</i></span>
+			</div>
+		</div>
+	</div>
+	<!-- subview right -->
+
+</div>
+<!-- test view -->
+<!-- category view -->
+<!-- exception view -->
+<div id='dashboard-view' class='view hide'>
+	<div class='card-panel transparent np-v'>
+		<h5>Dashboard</h5>
+
+		<div class='row'>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Tests
+					<div class='panel-lead'>37</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Steps
+					<div class='panel-lead'>210</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Start
+					<div class='panel-lead'>Oct 11, 2023 09:59:13 PM</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+			 		End
+			 		<div class='panel-lead'>Oct 11, 2023 10:17:05 PM</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Time Taken
+					<div class='panel-lead'>1,071,944ms</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- dashboard view -->
+<!-- testrunner-logs view -->
+		</div>
+		<!-- container -->
+
+		<script>
+			var statusGroup = {
+				passParent: 34,
+				failParent: 3,
+				fatalParent: 0,
+				errorParent: 0,
+				warningParent: 0,
+				skipParent: 0,
+				exceptionsParent: 3,
+				
+				passChild: 33,
+				failChild: 3,
+				fatalChild: 0,
+				errorChild: 0,
+				warningChild: 0,
+				skipChild: 0,
+				infoChild: 174,
+				exceptionsChild: 3,
+				
+				passGrandChild: 0,
+				failGrandChild: 0,
+				fatalGrandChild: 0,
+				errorGrandChild: 0,
+				warningGrandChild: 0,
+				skipGrandChild: 0,
+				infoGrandChild: 0,
+				exceptionsGrandChild: 0,
+			};
+		</script>
+		
+			<script src='https://cdn.rawgit.com/anshooarora/extentreports-java/5ed7b0c339b51aa347b44ccaa2e2ff29905b2f9f/dist/js/extent.js' type='text/javascript'></script>
+		
+		
+	</body>
+	
+</html>
