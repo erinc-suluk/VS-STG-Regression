@@ -177,7 +177,7 @@ public class ContentPage extends HelperFunctions{
 	@FindBy(xpath="//h1[@class='cmp-title__text']")
 	private WebElement title2;
 	
-	@FindBy(xpath="//div[@data-path='/content/valuestore/us/en/firmwide/qa-or-uat/erinc-content-automation-pages/regression-content-page/jcr:content/root/container/container_276238855/container/accordion']")
+	@FindBy(xpath="(//div[@title='Accordion'])[1]")
 	private WebElement editAccordion;
 	
 	@FindBy(xpath="//coral-tab-label[normalize-space()='Properties']")
@@ -198,7 +198,7 @@ public class ContentPage extends HelperFunctions{
 	@FindBy(xpath="//strong[normalize-space()='The Benefit:']")
 	private WebElement CEOtext;
 	
-	@FindBy(xpath="//strong[normalize-space()='Business:']")
+	@FindBy(xpath="//strong[normalize-space()='Business']")
 	private WebElement CFOtext;
 	
 	@FindBy(xpath="//button[@data-cmp-hook-accordion='button']")
@@ -651,7 +651,7 @@ public class ContentPage extends HelperFunctions{
 	@FindBy(xpath="//div[contains(@data-path, 'accordion/item_1')]//div[@title='Rich Text Component']")
 	private WebElement accordionTextEdit;
 	
-	@FindBy(xpath="//foundation-autocomplete[@name='./linkswrapper/item0/./linksgroup/item1/./internalUrl']//input[@is='coral-textfield']")
+	@FindBy(xpath="//foundation-autocomplete[@name='./linkswrapper/item1/./linksgroup/item0/./internalUrl']//input[@is='coral-textfield']")
 	private WebElement enablersTextField;
 	
 	@FindBy(xpath="//coral-list-item-content[normalize-space()='/content/valuestore/us/en/firmwide']")
@@ -1158,25 +1158,27 @@ ReadXLSdata read1=new ReadXLSdata();
 		read1.setExcelFile("./testdata.xlsx", "QA");
 	    //Driver.getDriver().get(read1.getCellData("VALUE", 2));
 	    test.info("Wait for page to load");
-	    HelperFunctions.waitForPageToLoad(15);
+	    //HelperFunctions.waitForPageToLoad(15);
 	 
 	    test.info("Wait for edit button visibility and clicked on it");
-	    WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
+	    WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 30);
 	    wait.until(ExpectedConditions.elementToBeClickable(editButton));
 	    //HelperFunctions.staticWait(3);
 	    editButton.click();
-	    HelperFunctions.staticWait(3);
+	    wait.until(ExpectedConditions.visibilityOf(editAccordion));
 	    test.info("Clicked on edit accordion");
-	    editAccordion.click();
-	    HelperFunctions.staticWait(3);
+	    JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+	    js.executeScript("arguments[0].click();", editAccordion);
+	    //editAccordion.click();
+	    wait.until(ExpectedConditions.elementToBeClickable(configure));
 	    test.info("Clicked on configure");
 	    configure.click();
-	    HelperFunctions.staticWait(3);
+	    //HelperFunctions.staticWait(3);
 	    test.info("Wait for pro tab visibility and clicked on it");
 	    WebDriverWait wait1 = new WebDriverWait(Driver.getDriver(), 10);
 	    wait1.until(ExpectedConditions.elementToBeClickable(proTab));
 	    proTab.click();
-	    HelperFunctions.staticWait(3);
+	    wait.until(ExpectedConditions.visibilityOf(singleCheckbox));
 	    test.info("Check if single checkbox is selected");
 	    Assert.assertTrue(singleCheckbox.isSelected());
 	    HelperFunctions.staticWait(2);
