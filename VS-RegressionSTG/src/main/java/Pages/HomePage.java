@@ -418,6 +418,24 @@ public class HomePage extends HelperFunctions {
 	@FindBy(xpath="//a[contains(@class, 'vs-search__figure-heading')]")
 	private static List<WebElement> searchItems3;
 	
+	@FindBy(xpath="//input[@id='t_Mexico']")
+	private WebElement mexicoCheckbox;
+	
+	@FindBy(xpath="//input[@id='t_Global']")
+	private WebElement globalCheckbox;
+	
+	@FindBy(xpath="//input[@id='t_Estados Unidos']")
+	private WebElement usCheckbox;
+	
+	@FindBy(xpath="//input[@id='t_US']")
+	private WebElement usGlobalCheckbox;
+	
+	@FindBy(xpath="//span[@class='vs-search__applied-territory']")
+	private static List<WebElement> terriLabels;
+	
+	@FindBy(xpath="//p[@class='vs-search__figure-description']//a[contains(text(),'Testing')]")
+	private WebElement externalDesc;
+	
 	
 	ReadXLSdata read1=new ReadXLSdata();
 	
@@ -1579,17 +1597,17 @@ public class HomePage extends HelperFunctions {
 	    HelperFunctions.staticWait(2);
 	    logo.click();*/
 	    test.info("Wait for page to load");
-	    HelperFunctions.waitForPageToLoad(15);
+	    //HelperFunctions.waitForPageToLoad(15);
 	    
-	    test.info("Wait logo visibility");
-	    WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
-	    wait.until(ExpectedConditions.visibilityOf(logo));
-	    HelperFunctions.staticWait(3);
+	    test.info("Wait search button's visibility");
+	    WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 30);
+	    wait.until(ExpectedConditions.visibilityOf(searchButton));
+	    //HelperFunctions.staticWait(3);
 	    test.info("Clicked on search button");
 	    searchButton.click();
-	    HelperFunctions.staticWait(2);
+	    wait.until(ExpectedConditions.visibilityOf(searchField));
 	    searchField.click();
-	    HelperFunctions.staticWait(2);
+	    //HelperFunctions.staticWait(2);
 	    test.info("Wait for trending search visibility");
 	    WebDriverWait wait2 = new WebDriverWait(Driver.getDriver(), 10);
 	    wait2.until(ExpectedConditions.visibilityOf(trendingSearch));
@@ -1602,24 +1620,24 @@ public class HomePage extends HelperFunctions {
 	    wait3.until(ExpectedConditions.visibilityOf(terriMenu));
 	    terriMenu.click();
 	    test.info("Clicked on territory menu");
-	    HelperFunctions.staticWait(3);
+	    //HelperFunctions.staticWait(3);
 	    WebElement mexicoLink = Driver.getDriver().findElement(By.linkText("Mexico"));
 	    WebDriverWait wait4 = new WebDriverWait(Driver.getDriver(), 10);
 	    wait4.until(ExpectedConditions.visibilityOf(mexicoLink));
 	    mexicoLink.click();
 	    test.info("Clicked on Mexico");
-	    HelperFunctions.waitForPageToLoad(15);
+	    HelperFunctions.waitForPageToLoad(60);
 	    //HelperFunctions.staticWait(3);
-	    test.info("Wait for visibility of territory menu");
-	    WebDriverWait wait5 = new WebDriverWait(Driver.getDriver(), 10);
-	    wait5.until(ExpectedConditions.visibilityOf(terriMenu));
+	    test.info("Wait for visibility of search button");
+	    WebDriverWait wait5 = new WebDriverWait(Driver.getDriver(), 20);
+	    wait5.until(ExpectedConditions.visibilityOf(searchButton));
 	    test.info("Clicked on search button");
 	    searchButton.click();
-	    HelperFunctions.staticWait(2);
+	    wait5.until(ExpectedConditions.visibilityOf(searchField2));
 	    searchField2.click();
-	    HelperFunctions.staticWait(2);
+	    //HelperFunctions.staticWait(2);
 	    test.info("Wait for trending search visibility");
-	    WebDriverWait wait6 = new WebDriverWait(Driver.getDriver(), 10);
+	    WebDriverWait wait6 = new WebDriverWait(Driver.getDriver(), 20);
 	    wait6.until(ExpectedConditions.visibilityOf(trendingSearch));
 	    Assert.assertTrue(trendingSearch.isDisplayed());
 	    HelperFunctions.staticWait(2);
@@ -4980,5 +4998,161 @@ public class HomePage extends HelperFunctions {
 	    Assert.assertTrue(articleFavIcons.size()==0);
 	    test.info("Verified no fav icon is displayed");
 	    HelperFunctions.staticWait(3);
+	}
+	public void setSelectingTerritoriesSearchResult(ExtentTest test) throws Exception {
+		read1.setExcelFile("./testdata.xlsx", "QA");
+	    test.info("Wait for page to load");
+	   
+	    test.info("Wait search button's visibility");
+	    WebDriverWait wait2 = new WebDriverWait(Driver.getDriver(), 30);
+	    wait2.until(ExpectedConditions.visibilityOf(searchButton));
+	    test.info("Clicked on search button");
+	    searchButton.click();
+	    wait2.until(ExpectedConditions.visibilityOf(searchField));
+	    test.info("Clicked on search field and send text");
+	    searchField.click();
+	    HelperFunctions.staticWait(2);
+	    String mockContent="esg";
+	    searchField.sendKeys(mockContent);
+	    HelperFunctions.staticWait(3);
+	    test.info("Clicking on Enter");
+	    Actions actions = new Actions(Driver.getDriver());
+	    actions.sendKeys(Keys.ENTER).build().perform();
+	    test.info("Wait for page to load");
+	    HelperFunctions.waitForPageToLoad(60);
+	    try {
+	    	Thread.sleep(3000);
+	    }catch(InterruptedException e) {
+	    	e.printStackTrace();
+	    }
+	    JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+	    js.executeScript("arguments[0].click();", mexicoCheckbox);
+	    test.info("Clicked on mexico checkbox");
+	    try {
+	    	Thread.sleep(3000);
+	    }catch(InterruptedException e) {
+	    	e.printStackTrace();
+	    }
+	    js.executeScript("arguments[0].click();", globalCheckbox);
+	    HelperFunctions.staticWait(3);
+	    Assert.assertTrue(mexicoCheckbox.isSelected());
+	    HelperFunctions.staticWait(2);
+	    Assert.assertTrue(globalCheckbox.isSelected());
+	    HelperFunctions.staticWait(3);
+	    test.info("Clicked on territory menu");
+	    terriMenu.click();
+	    wait2.until(ExpectedConditions.visibilityOf(mexico));
+	    test.info("Clicked on mexico");
+	    mexico.click();
+	    HelperFunctions.waitForPageToLoad(60);
+	    wait2.until(ExpectedConditions.visibilityOf(searchButton));
+	    test.info("Clicked on search button");
+	    searchButton.click();
+	    wait2.until(ExpectedConditions.visibilityOf(searchField2));
+	    test.info("Clicked on search field and send text");
+	    searchField2.click();
+	    HelperFunctions.staticWait(2);
+	    searchField2.sendKeys(mockContent);
+	    HelperFunctions.staticWait(3);
+	    test.info("Clicking on Enter");
+	    actions.sendKeys(Keys.ENTER).build().perform();
+	    test.info("Wait for page to load");
+	    HelperFunctions.waitForPageToLoad(60);
+	    try {
+	    	Thread.sleep(4000);
+	    }catch(InterruptedException e) {
+	    	e.printStackTrace();
+	    }
+	    JavascriptExecutor js2 = (JavascriptExecutor) Driver.getDriver();
+	    js2.executeScript("arguments[0].click();", usCheckbox);
+	    test.info("Clicked on us checkbox");
+	    try {
+	    	Thread.sleep(3000);
+	    }catch(InterruptedException e) {
+	    	e.printStackTrace();
+	    }
+	    js.executeScript("arguments[0].click();", globalCheckbox);
+	    HelperFunctions.staticWait(3);
+	    Assert.assertTrue(usCheckbox.isSelected());
+	    HelperFunctions.staticWait(2);
+	    Assert.assertTrue(globalCheckbox.isSelected());
+	    HelperFunctions.staticWait(3);
+	    terriMenu.click();
+	    test.info("Clicked on territory menu");
+	    //HelperFunctions.staticWait(3);
+	    WebElement globalLink = Driver.getDriver().findElement(By.linkText("Global"));
+	    WebDriverWait wait5 = new WebDriverWait(Driver.getDriver(), 30);
+	    wait5.until(ExpectedConditions.visibilityOf(globalLink));
+	    globalLink.click();
+	    test.info("Clicked on Global");
+	    HelperFunctions.waitForPageToLoad(60);
+	    wait2.until(ExpectedConditions.visibilityOf(searchButton));
+	    test.info("Clicked on search button");
+	    searchButton.click();
+	    wait2.until(ExpectedConditions.visibilityOf(searchField));
+	    test.info("Clicked on search field and send text");
+	    searchField.click();
+	    HelperFunctions.staticWait(2);
+	    searchField.sendKeys(mockContent);
+	    HelperFunctions.staticWait(3);
+	    test.info("Clicking on Enter");
+	    actions.sendKeys(Keys.ENTER).build().perform();
+	    test.info("Wait for page to load");
+	    HelperFunctions.waitForPageToLoad(60);
+	    try {
+	    	Thread.sleep(4000);
+	    }catch(InterruptedException e) {
+	    	e.printStackTrace();
+	    }
+	    JavascriptExecutor js3 = (JavascriptExecutor) Driver.getDriver();
+	    js3.executeScript("arguments[0].click();", mexicoCheckbox);
+	    test.info("Clicked on mexico checkbox");
+	    try {
+	    	Thread.sleep(3000);
+	    }catch(InterruptedException e) {
+	    	e.printStackTrace();
+	    }
+	    js.executeScript("arguments[0].click();", usGlobalCheckbox);
+	    HelperFunctions.staticWait(3);
+	    Assert.assertTrue(usGlobalCheckbox.isSelected());
+	    HelperFunctions.staticWait(2);
+	    Assert.assertTrue(mexicoCheckbox.isSelected());
+	    HelperFunctions.staticWait(3);
+	}
+	public void setExternalLinkDesc(ExtentTest test) throws Exception {
+		read1.setExcelFile("./testdata.xlsx", "QA");
+	    test.info("Wait for page to load");
+	   
+	    test.info("Wait search button's visibility");
+	    WebDriverWait wait2 = new WebDriverWait(Driver.getDriver(), 30);
+	    wait2.until(ExpectedConditions.visibilityOf(searchButton));
+	    test.info("Clicked on search button");
+	    searchButton.click();
+	    wait2.until(ExpectedConditions.visibilityOf(searchField));
+	    test.info("Clicked on search field and send text");
+	    searchField.click();
+	    HelperFunctions.staticWait(2);
+	    String mockContent="automation external page";
+	    searchField.sendKeys(mockContent);
+	    HelperFunctions.staticWait(3);
+	    test.info("Clicking on Enter");
+	    Actions actions = new Actions(Driver.getDriver());
+	    actions.sendKeys(Keys.ENTER).build().perform();
+	    test.info("Wait for page to load");
+	    HelperFunctions.waitForPageToLoad(60);
+	    test.info("Clicking on external link description");
+	    wait2.until(ExpectedConditions.visibilityOf(externalDesc));
+	    JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+	    js.executeScript("arguments[0].click();", externalDesc);
+	    test.info("Switching to new tab");
+	    ArrayList<String> tabs=new ArrayList<String>(Driver.getDriver().getWindowHandles());
+		Driver.getDriver().switchTo().window(tabs.get(1));
+		HelperFunctions.staticWait(15);
+        String currentUrl=Driver.getDriver().getCurrentUrl();
+        test.info("Checking the current url value");
+        Assert.assertTrue(currentUrl.contains("pwc"));
+        test.info("Verified open url on new tab");
+        HelperFunctions.staticWait(3);
+	    
 	}
 }

@@ -177,7 +177,7 @@ public class ContentPage extends HelperFunctions{
 	@FindBy(xpath="//h1[@class='cmp-title__text']")
 	private WebElement title2;
 	
-	@FindBy(xpath="//div[@data-path='/content/valuestore/us/en/firmwide/qa-or-uat/erinc-content-automation-pages/regression-content-page/jcr:content/root/container/container_276238855/container/accordion']")
+	@FindBy(xpath="(//div[@title='Accordion'])[1]")
 	private WebElement editAccordion;
 	
 	@FindBy(xpath="//coral-tab-label[normalize-space()='Properties']")
@@ -198,7 +198,7 @@ public class ContentPage extends HelperFunctions{
 	@FindBy(xpath="//strong[normalize-space()='The Benefit:']")
 	private WebElement CEOtext;
 	
-	@FindBy(xpath="//strong[normalize-space()='Business:']")
+	@FindBy(xpath="//strong[normalize-space()='Business']")
 	private WebElement CFOtext;
 	
 	@FindBy(xpath="//button[@data-cmp-hook-accordion='button']")
@@ -651,7 +651,7 @@ public class ContentPage extends HelperFunctions{
 	@FindBy(xpath="//div[contains(@data-path, 'accordion/item_1')]//div[@title='Rich Text Component']")
 	private WebElement accordionTextEdit;
 	
-	@FindBy(xpath="//foundation-autocomplete[@name='./linkswrapper/item0/./linksgroup/item1/./internalUrl']//input[@is='coral-textfield']")
+	@FindBy(xpath="//foundation-autocomplete[@name='./linkswrapper/item1/./linksgroup/item0/./internalUrl']//input[@is='coral-textfield']")
 	private WebElement enablersTextField;
 	
 	@FindBy(xpath="//coral-list-item-content[normalize-space()='/content/valuestore/us/en/firmwide']")
@@ -686,6 +686,15 @@ public class ContentPage extends HelperFunctions{
 	
 	@FindBy(xpath="//button[.='Next']")
 	private WebElement next;
+	
+	@FindBy(xpath="//textarea[@name='./jcr:description']")
+	private WebElement externalDesc;
+	
+	@FindBy(xpath="//input[@name='./externalUrl']")
+	private WebElement externalUrl;
+	
+	@FindBy(xpath="//button[@title='View as Published']")
+	private WebElement viewasPublish;
 	
 	
 	
@@ -1158,25 +1167,27 @@ ReadXLSdata read1=new ReadXLSdata();
 		read1.setExcelFile("./testdata.xlsx", "QA");
 	    //Driver.getDriver().get(read1.getCellData("VALUE", 2));
 	    test.info("Wait for page to load");
-	    HelperFunctions.waitForPageToLoad(15);
+	    //HelperFunctions.waitForPageToLoad(15);
 	 
 	    test.info("Wait for edit button visibility and clicked on it");
-	    WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
+	    WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 30);
 	    wait.until(ExpectedConditions.elementToBeClickable(editButton));
 	    //HelperFunctions.staticWait(3);
 	    editButton.click();
-	    HelperFunctions.staticWait(3);
+	    wait.until(ExpectedConditions.visibilityOf(editAccordion));
 	    test.info("Clicked on edit accordion");
-	    editAccordion.click();
-	    HelperFunctions.staticWait(3);
+	    JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+	    js.executeScript("arguments[0].click();", editAccordion);
+	    //editAccordion.click();
+	    wait.until(ExpectedConditions.elementToBeClickable(configure));
 	    test.info("Clicked on configure");
 	    configure.click();
-	    HelperFunctions.staticWait(3);
+	    //HelperFunctions.staticWait(3);
 	    test.info("Wait for pro tab visibility and clicked on it");
 	    WebDriverWait wait1 = new WebDriverWait(Driver.getDriver(), 10);
 	    wait1.until(ExpectedConditions.elementToBeClickable(proTab));
 	    proTab.click();
-	    HelperFunctions.staticWait(3);
+	    wait.until(ExpectedConditions.visibilityOf(singleCheckbox));
 	    test.info("Check if single checkbox is selected");
 	    Assert.assertTrue(singleCheckbox.isSelected());
 	    HelperFunctions.staticWait(2);
@@ -4477,6 +4488,106 @@ ReadXLSdata read1=new ReadXLSdata();
         selectButton.click();
         test.info("Verified choosing supplemantary economy tags");
         HelperFunctions.staticWait(3);
+	}
+	public void setExternalPageAuth(ExtentTest test) throws Exception {
+		read1.setExcelFile("./testdata.xlsx", "QA");
+        test.info("Wait for page to load and page info");
+	    WebDriverWait wait2 = new WebDriverWait(Driver.getDriver(), 30);
+	    wait2.until(ExpectedConditions.visibilityOf(pageInfo));
+	    JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+	    js.executeScript("arguments[0].click();", pageInfo);
+	    test.info("Clicking on open properties");
+	    wait2.until(ExpectedConditions.visibilityOf(openPro));
+	    openPro.click();
+	    test.info("Wait for page to load");
+	    HelperFunctions.waitForPageToLoad(60);
+	    HelperFunctions.staticWait(3);
+	    test.info("Enter new title value");
+	    titleField.click();
+	    HelperFunctions.staticWait(2);
+	    titleField.clear();
+	    HelperFunctions.staticWait(2);
+	    String actualTitle="Automation External Page";
+	    String mockTitle="Automation External Page2";
+	    titleField.sendKeys(mockTitle);
+	    HelperFunctions.staticWait(2);
+	    test.info("Enter new description value");
+	    externalDesc.click();
+	    HelperFunctions.staticWait(2);
+	    externalDesc.clear();
+	    HelperFunctions.staticWait(2);
+	    String actualDesc="Automation Testing";
+	    String mockDesc="Demo";
+	    externalDesc.sendKeys(mockDesc);
+	    HelperFunctions.staticWait(2);
+	    test.info("Enter new external url");
+	    js.executeScript("arguments[0].click();", externalUrl);
+	    HelperFunctions.staticWait(2);
+	    externalUrl.clear();
+	    HelperFunctions.staticWait(2);
+	    String actualUrl="https://www.pwc.com";
+	    String mockUrl="https://www.google.com";
+	    externalUrl.sendKeys(mockUrl);
+	    HelperFunctions.staticWait(2);
+	    test.info("Clicking on save and close");
+	    saveClose.click();
+	    test.info("Wait for page to load and click on page info");
+	    HelperFunctions.waitForPageToLoad(60);
+	    wait2.until(ExpectedConditions.visibilityOf(pageInfo));
+	    js.executeScript("arguments[0].click();", pageInfo);
+	    test.info("Clicking on view as publish");
+	    wait2.until(ExpectedConditions.visibilityOf(viewasPublish));
+	    viewasPublish.click();
+	    HelperFunctions.staticWait(5);
+	    test.info("Switching tab");
+        ArrayList<String> tabs=new ArrayList<String>(Driver.getDriver().getWindowHandles());
+		Driver.getDriver().switchTo().window(tabs.get(1));
+		HelperFunctions.staticWait(15);
+        String currentUrl=Driver.getDriver().getCurrentUrl();
+        test.info("Checking the current url value has changed");
+        Assert.assertTrue(currentUrl.contains("google"));
+        test.info("Verified external link has changed");
+        Driver.getDriver().switchTo().window(tabs.get(0));
+        wait2.until(ExpectedConditions.visibilityOf(pageInfo));
+        js.executeScript("arguments[0].click();", pageInfo);
+	    test.info("Clicking on open properties");
+	    wait2.until(ExpectedConditions.visibilityOf(openPro));
+	    openPro.click();
+	    test.info("Wait for page to load");
+	    HelperFunctions.waitForPageToLoad(60);
+	    HelperFunctions.staticWait(3);
+	    test.info("Enter previous title value");
+	    titleField.click();
+	    HelperFunctions.staticWait(2);
+	    titleField.clear();
+	    HelperFunctions.staticWait(2);
+	    titleField.sendKeys(actualTitle);
+	    HelperFunctions.staticWait(2);
+	    test.info("Enter previous description value");
+	    externalDesc.click();
+	    HelperFunctions.staticWait(2);
+	    externalDesc.clear();
+	    HelperFunctions.staticWait(2);
+	    externalDesc.sendKeys(actualDesc);
+	    HelperFunctions.staticWait(2);
+	    test.info("Enter previous external url");
+	    js.executeScript("arguments[0].click();", externalUrl);
+	    HelperFunctions.staticWait(2);
+	    externalUrl.clear();
+	    HelperFunctions.staticWait(2);
+	    externalUrl.sendKeys(actualUrl);
+	    HelperFunctions.staticWait(2);
+	    test.info("Clicking on save and close");
+	    saveClose.click();
+	    test.info("Wait for page to load and click on page info");
+	    HelperFunctions.waitForPageToLoad(60);
+	    HelperFunctions.staticWait(3);
+	    js.executeScript("arguments[0].click();", pageInfo);
+	    //HelperFunctions.staticWait(2);
+	    WebDriverWait wait6 = new WebDriverWait(Driver.getDriver(), 10);
+	    wait6.until(ExpectedConditions.elementToBeClickable(publishPage));
+	    publishPage.click();
+	    HelperFunctions.staticWait(3);
 	}
 	
 }

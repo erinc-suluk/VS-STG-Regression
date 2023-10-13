@@ -196,6 +196,11 @@
        <include name="WEB_185"/>
        <include name="WEB_186"/>
        <exclude name="WEB_187"/>
+       <include name="WEB_188"/>
+       <include name="WEB_189"/>
+       <include name="WEB_190"/>
+       <include name="WEB_191"/>
+
        
        
       
