@@ -2462,6 +2462,64 @@ public class RegressionTestCases extends HelperFunctions {
 		    }
 	}
 	
+	@Test
+	public void WEB_188() throws Exception{
+		  String testName = "To verify that authors should be able to define External link URL"
+				  +"/ To verify that external links description is defined by the authors"
+				  +"/ To verify that external link title is defined by the authors";
+		    ExtentTest test = extent.createTest(testName);
+
+		    try {
+		        Driver.getDriver().get(read1.getCellData("VALUE", 50));
+		        lpo.setLogin4();
+		        cp.setExternalPageAuth(test);
+		        test.pass("WEB_187 passed");  
+		    } catch (Exception e) {
+		        String screenshotPath = takeScreenshot(testName);
+		        test.fail("Test failed: " + e.getMessage(), MediaEntityBuilder.createScreenCaptureFromPath(screenshotPath).build());
+		    }
+		    if (test.getModel().getStatus().toString().equalsIgnoreCase("fail")) {
+		        Assert.fail("Test case failed: " + testName);
+		    }
+	}
+	@Test
+	public void WEB_189() throws Exception{
+		  String testName = "To verify that users can select one or more territories ti view cross territory search results";
+		    ExtentTest test = extent.createTest(testName);
+
+		    try {
+		        Driver.getDriver().get(read1.getCellData("VALUE", 10));
+		        lpo.setLogin4();
+		        hp.setSelectingTerritoriesSearchResult(test);
+		        test.pass("WEB_187 passed");  
+		    } catch (Exception e) {
+		        String screenshotPath = takeScreenshot(testName);
+		        test.fail("Test failed: " + e.getMessage(), MediaEntityBuilder.createScreenCaptureFromPath(screenshotPath).build());
+		    }
+		    if (test.getModel().getStatus().toString().equalsIgnoreCase("fail")) {
+		        Assert.fail("Test case failed: " + testName);
+		    }
+	}
+	
+	@Test
+	public void WEB_190() throws Exception{
+		  String testName = "To verify that external links description will open the link in a new tab";
+		    ExtentTest test = extent.createTest(testName);
+
+		    try {
+		        Driver.getDriver().get(read1.getCellData("VALUE", 10));
+		        lpo.setLogin4();
+		        hp.setExternalLinkDesc(test);
+		        test.pass("WEB_187 passed");  
+		    } catch (Exception e) {
+		        String screenshotPath = takeScreenshot(testName);
+		        test.fail("Test failed: " + e.getMessage(), MediaEntityBuilder.createScreenCaptureFromPath(screenshotPath).build());
+		    }
+		    if (test.getModel().getStatus().toString().equalsIgnoreCase("fail")) {
+		        Assert.fail("Test case failed: " + testName);
+		    }
+	}
+	
 	
 	
 	
