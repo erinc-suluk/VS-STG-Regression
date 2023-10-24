@@ -1171,21 +1171,33 @@ ReadXLSdata read1=new ReadXLSdata();
 	 
 	    test.info("Wait for edit button visibility and clicked on it");
 	    WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 30);
-	    wait.until(ExpectedConditions.elementToBeClickable(editButton));
+	    //wait.until(ExpectedConditions.elementToBeClickable(editButton));
+	    JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+	     try {
+		    	Thread.sleep(3000);
+		    }catch(InterruptedException e) {
+		    	e.printStackTrace();
+		    }
+		 js.executeScript("arguments[0].click();", pageInfo);
+		    try {
+		    	Thread.sleep(3000);
+		    }catch(InterruptedException e) {
+		    	e.printStackTrace();
+		    }
 	    //HelperFunctions.staticWait(3);
 	    editButton.click();
 	    wait.until(ExpectedConditions.visibilityOf(editAccordion));
 	    test.info("Clicked on edit accordion");
-	    JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+	    //JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
 	    js.executeScript("arguments[0].click();", editAccordion);
 	    //editAccordion.click();
-	    wait.until(ExpectedConditions.elementToBeClickable(configure));
+	    wait.until(ExpectedConditions.visibilityOf(configure));
 	    test.info("Clicked on configure");
 	    configure.click();
 	    //HelperFunctions.staticWait(3);
 	    test.info("Wait for pro tab visibility and clicked on it");
 	    WebDriverWait wait1 = new WebDriverWait(Driver.getDriver(), 10);
-	    wait1.until(ExpectedConditions.elementToBeClickable(proTab));
+	    wait1.until(ExpectedConditions.visibilityOf(proTab));
 	    proTab.click();
 	    wait.until(ExpectedConditions.visibilityOf(singleCheckbox));
 	    test.info("Check if single checkbox is selected");
@@ -1199,12 +1211,23 @@ ReadXLSdata read1=new ReadXLSdata();
 	    HelperFunctions.staticWait(2);
 	    test.info("Clicked on done button");
 	    done.click();
+	    try {
+	    	Thread.sleep(3000);
+	    }catch(InterruptedException e) {
+	    	e.printStackTrace();
+	    }
+	    js.executeScript("arguments[0].click();", pageInfo);
+	    try {
+	    	Thread.sleep(3000);
+	    }catch(InterruptedException e) {
+	    	e.printStackTrace();
+	    }
 	    WebDriverWait wait2 = new WebDriverWait(Driver.getDriver(), 10);
-	    wait2.until(ExpectedConditions.elementToBeClickable(editButton));
+	    //wait2.until(ExpectedConditions.elementToBeClickable(editButton));
 	    //HelperFunctions.staticWait(3);
 	    editButton.click();
 	    WebDriverWait wait3 = new WebDriverWait(Driver.getDriver(), 10);
-	    wait3.until(ExpectedConditions.elementToBeClickable(accordionTextEdit));
+	    wait3.until(ExpectedConditions.visibilityOf(accordionTextEdit));
 	    accordionTextEdit.click();
 	    WebDriverWait wait4 = new WebDriverWait(Driver.getDriver(), 10);
 	    wait4.until(ExpectedConditions.visibilityOf(configure));
@@ -1214,9 +1237,19 @@ ReadXLSdata read1=new ReadXLSdata();
 	    dykTextEdit.click();
 	    HelperFunctions.staticWait(2);
         done.click();
-        HelperFunctions.staticWait(2);
+        try {
+	    	Thread.sleep(3000);
+	    }catch(InterruptedException e) {
+	    	e.printStackTrace();
+	    }
+	    js.executeScript("arguments[0].click();", pageInfo);
+	    try {
+	    	Thread.sleep(3000);
+	    }catch(InterruptedException e) {
+	    	e.printStackTrace();
+	    }
 	    WebDriverWait wait6 = new WebDriverWait(Driver.getDriver(), 10);
-	    wait6.until(ExpectedConditions.elementToBeClickable(previewButton));
+	    //wait6.until(ExpectedConditions.elementToBeClickable(previewButton));
 	    previewButton.click();
 	    Driver.getDriver().switchTo().frame(0);
 	    HelperFunctions.staticWait(2);
@@ -1228,7 +1261,7 @@ ReadXLSdata read1=new ReadXLSdata();
 	    HelperFunctions.staticWait(2);
 	    test.info("Wait for first accordion button is clickable and clicked on it");
 	    WebDriverWait wait7 = new WebDriverWait(Driver.getDriver(), 10);
-	    wait7.until(ExpectedConditions.elementToBeClickable(accordionButtons.get(1)));
+	    wait7.until(ExpectedConditions.visibilityOf(accordionButtons.get(1)));
 	    accordionButtons.get(1).click();
 	    HelperFunctions.staticWait(2);
 	    test.info("Check if CEO text is displayed");
@@ -1238,7 +1271,7 @@ ReadXLSdata read1=new ReadXLSdata();
 	    Assert.assertTrue(CFOtext.isDisplayed());
 	    test.info("Wait for second accordion button is clickable and clicked on it");
 	    WebDriverWait wait8 = new WebDriverWait(Driver.getDriver(), 10);
-	    wait8.until(ExpectedConditions.elementToBeClickable(accordionButtons.get(0)));
+	    wait8.until(ExpectedConditions.visibilityOf(accordionButtons.get(0)));
 	    accordionButtons.get(0).click();
 	    HelperFunctions.staticWait(2);
 	    test.info("Check if CEO text is not displayed");

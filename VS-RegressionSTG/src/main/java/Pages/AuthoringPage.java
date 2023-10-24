@@ -130,6 +130,9 @@ public class AuthoringPage extends HelperFunctions {
 	
 	@FindBy(xpath="//img[@src='/content/dam/valuestore/us/en/thumbnails/Ghost.png']")
 	private WebElement ghostTemplate;
+	
+	@FindBy(xpath="//coral-icon[@icon='properties']")
+	private WebElement pageInfo;
  
     
 	ReadXLSdata read1=new ReadXLSdata();
@@ -285,9 +288,20 @@ public class AuthoringPage extends HelperFunctions {
 	    //Driver.getDriver().get(read1.getCellData("VALUE", 39));
 	   // HelperFunctions.waitForPageToLoad(15);
 	    WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
-	    wait.until(ExpectedConditions.elementToBeClickable(editButton));
-	    editButton.click();
+	    try {
+	    	Thread.sleep(3000);
+	    }catch(InterruptedException e) {
+	    	e.printStackTrace();
+	    }
 	    JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+	 js.executeScript("arguments[0].click();", pageInfo);
+	    try {
+	    	Thread.sleep(3000);
+	    }catch(InterruptedException e) {
+	    	e.printStackTrace();
+	    }
+	    editButton.click();
+	    //JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
 	    js.executeScript("arguments[0].click();", mightLikeEdit);
 	    HelperFunctions.staticWait(2);
 	    configure.click();
@@ -309,9 +323,20 @@ public class AuthoringPage extends HelperFunctions {
 	   // Driver.getDriver().get(read1.getCellData("VALUE", 39));
 	   //HelperFunctions.waitForPageToLoad(15);
 	    WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
-	    wait.until(ExpectedConditions.elementToBeClickable(editButton));
-	    editButton.click();
 	    JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+	     try {
+		    	Thread.sleep(3000);
+		    }catch(InterruptedException e) {
+		    	e.printStackTrace();
+		    }
+		 js.executeScript("arguments[0].click();", pageInfo);
+		    try {
+		    	Thread.sleep(3000);
+		    }catch(InterruptedException e) {
+		    	e.printStackTrace();
+		    }
+	    editButton.click();
+	    //JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
 	    js.executeScript("arguments[0].click();", top10Edit);
 	    HelperFunctions.staticWait(2);
 	    configure.click();

@@ -3048,10 +3048,15 @@ public class HomePage extends HelperFunctions {
 	    HelperFunctions.staticWait(3);*/
 	    test.info("Wait for logo visibility");
 	    WebDriverWait wait2 = new WebDriverWait(Driver.getDriver(), 10);
-	    wait2.until(ExpectedConditions.visibilityOf(selectTopic));
+	  //wait2.until(ExpectedConditions.visibilityOf(selectTopic));
+	    try {
+	    	Thread.sleep(3000);
+	    }catch(InterruptedException e) {
+	    	e.printStackTrace();
+	    }
 	    test.info("Clicked on select topic");
-        selectTopic.click();
-        HelperFunctions.staticWait(2);
+	    JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+	    js.executeScript("arguments[0].click();", selectTopic);
         test.info("Wait for filter list's visibility");
         WebDriverWait wait3 = new WebDriverWait(Driver.getDriver(), 10);
 	    wait3.until(ExpectedConditions.visibilityOf(filterList));
@@ -3521,16 +3526,22 @@ public class HomePage extends HelperFunctions {
 	    WebDriverWait wait2 = new WebDriverWait(Driver.getDriver(), 10);
 	    wait2.until(ExpectedConditions.visibilityOf(logo));
 	    test.info("Clicked on select topic");
-        selectTopic.click();
+	    JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+	    js.executeScript("arguments[0].click();", selectTopic);
+        //selectTopic.click();
         HelperFunctions.staticWait(2);
         test.info("Wait for deals checkbox visibility and clicked on it");
         WebDriverWait wait3 = new WebDriverWait(Driver.getDriver(), 10);
 	    wait3.until(ExpectedConditions.visibilityOf(dealsCheckbox));
 	    JavascriptExecutor js2 = (JavascriptExecutor) Driver.getDriver();
 	    js2.executeScript("arguments[0].click();", dealsCheckbox);
-	    HelperFunctions.staticWait(2);
+	    try {
+	    	Thread.sleep(3000);
+	    }catch(InterruptedException e) {
+	    	e.printStackTrace();
+	    }
 	    test.info("Clicked on select topic");
-	    selectTopic.click();
+	    js.executeScript("arguments[0].click();", selectTopic);
 	    test.info("Getting the initial asset size");
 	    int initialSize = assets.size();
 	    System.out.println(initialSize);
