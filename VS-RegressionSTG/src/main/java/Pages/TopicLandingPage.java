@@ -175,11 +175,22 @@ public class TopicLandingPage extends HelperFunctions {
 		read1.setExcelFile("./testdata.xlsx", "STG");
 	    Driver.getDriver().get(read1.getCellData("VALUE", 9));
 	    test.info("Wait for page to load");
-	    HelperFunctions.waitForPageToLoad(3);
-	    HelperFunctions.staticWait(3);
-	    test.info("Wait for edit button visibility and clicked on it");
 	    WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
-	    wait.until(ExpectedConditions.elementToBeClickable(editButton));
+	    JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+	     try {
+		    	Thread.sleep(3000);
+		    }catch(InterruptedException e) {
+		    	e.printStackTrace();
+		    }
+		 js.executeScript("arguments[0].click();", pageInfo);
+		    try {
+		    	Thread.sleep(3000);
+		    }catch(InterruptedException e) {
+		    	e.printStackTrace();
+		    }
+	    test.info("Wait for edit button visibility and clicked on it");
+	    //WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
+	    //wait.until(ExpectedConditions.elementToBeClickable(editButton));
 	    editButton.click();
 	    HelperFunctions.staticWait(3);
 	    test.info("Clicked on key asset edit");
@@ -191,7 +202,7 @@ public class TopicLandingPage extends HelperFunctions {
 	    HelperFunctions.staticWait(3);
 	    test.info("Verified configure button is displayed");
 	    WebDriverWait wait2 = new WebDriverWait(Driver.getDriver(), 10);
-	    wait2.until(ExpectedConditions.elementToBeClickable(configure));
+	    wait2.until(ExpectedConditions.visibilityOf(configure));
 	    Assert.assertTrue(configure.isDisplayed());
 	    HelperFunctions.staticWait(3);
 	    test.info("Clicked on configure button");
@@ -213,11 +224,22 @@ public class TopicLandingPage extends HelperFunctions {
 		read1.setExcelFile("./testdata.xlsx", "STG");
 	    Driver.getDriver().get(read1.getCellData("VALUE", 9));
 	    test.info("Wait for page to load");
-	    HelperFunctions.waitForPageToLoad(3);
-	    HelperFunctions.staticWait(3);
-	    test.info("Wait for edit button visibility and clicked on it");
 	    WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
-	    wait.until(ExpectedConditions.elementToBeClickable(editButton));
+	    JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+	     try {
+		    	Thread.sleep(3000);
+		    }catch(InterruptedException e) {
+		    	e.printStackTrace();
+		    }
+		 js.executeScript("arguments[0].click();", pageInfo);
+		    try {
+		    	Thread.sleep(3000);
+		    }catch(InterruptedException e) {
+		    	e.printStackTrace();
+		    }
+	    test.info("Wait for edit button visibility and clicked on it");
+	    //WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
+	    //wait.until(ExpectedConditions.elementToBeClickable(editButton));
 	    editButton.click();
 	    HelperFunctions.staticWait(3);
 	    test.info("Clicked on hot topics edit");
@@ -229,7 +251,7 @@ public class TopicLandingPage extends HelperFunctions {
 	    HelperFunctions.staticWait(3);
 	    test.info("Verified configure button is displayed");
 	    WebDriverWait wait2 = new WebDriverWait(Driver.getDriver(), 10);
-	    wait2.until(ExpectedConditions.elementToBeClickable(configure));
+	    wait2.until(ExpectedConditions.visibilityOf(configure));
 	    Assert.assertTrue(configure.isDisplayed());
 	    HelperFunctions.staticWait(3);
 	    test.info("Clicked on configure button");
@@ -309,9 +331,22 @@ public class TopicLandingPage extends HelperFunctions {
 	   // test.info("Wait for page to load");
 	   // HelperFunctions.waitForPageToLoad(3);
 	  //  HelperFunctions.staticWait(3);
+		WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
+	    JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+	     try {
+		    	Thread.sleep(3000);
+		    }catch(InterruptedException e) {
+		    	e.printStackTrace();
+		    }
+		 js.executeScript("arguments[0].click();", pageInfo);
+		    try {
+		    	Thread.sleep(3000);
+		    }catch(InterruptedException e) {
+		    	e.printStackTrace();
+		    }
 	    test.info("Wait for edit button visibility and clicked on it");
-	    WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
-	    wait.until(ExpectedConditions.elementToBeClickable(editButton));
+	    //WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
+	    //wait.until(ExpectedConditions.elementToBeClickable(editButton));
 	    editButton.click();
 	    HelperFunctions.staticWait(3);
 	    test.info("Clicked on hot topics edit");
@@ -323,7 +358,7 @@ public class TopicLandingPage extends HelperFunctions {
 	    HelperFunctions.staticWait(3);
 	    test.info("Verified configure button is displayed");
 	    WebDriverWait wait2 = new WebDriverWait(Driver.getDriver(), 10);
-	    wait2.until(ExpectedConditions.elementToBeClickable(configure));
+	    wait2.until(ExpectedConditions.visibilityOf(configure));
 	    Assert.assertTrue(configure.isDisplayed());
 	    HelperFunctions.staticWait(3);
 	    test.info("Clicked on configure button");
@@ -580,9 +615,22 @@ public class TopicLandingPage extends HelperFunctions {
 	    test.info("Wait for page to load");
 	    HelperFunctions.waitForPageToLoad(3);
 	    HelperFunctions.staticWait(3);*/
+		WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
+	    JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+	     try {
+		    	Thread.sleep(3000);
+		    }catch(InterruptedException e) {
+		    	e.printStackTrace();
+		    }
+		 js.executeScript("arguments[0].click();", pageInfo);
+		    try {
+		    	Thread.sleep(3000);
+		    }catch(InterruptedException e) {
+		    	e.printStackTrace();
+		    }
 	    test.info("Wait for edit button visibility and clicked on it");
-	    WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
-	    wait.until(ExpectedConditions.elementToBeClickable(editButton));
+	    //WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
+	    //wait.until(ExpectedConditions.elementToBeClickable(editButton));
 	    editButton.click();
 	    HelperFunctions.staticWait(3);
 	    test.info("Clicked on key asset edit");
@@ -594,7 +642,7 @@ public class TopicLandingPage extends HelperFunctions {
 	    HelperFunctions.staticWait(3);
 	    test.info("Verified configure button is displayed");
 	    WebDriverWait wait2 = new WebDriverWait(Driver.getDriver(), 10);
-	    wait2.until(ExpectedConditions.elementToBeClickable(configure));
+	    wait2.until(ExpectedConditions.visibilityOf(configure));
 	    Assert.assertTrue(configure.isDisplayed());
 	    HelperFunctions.staticWait(3);
 	    test.info("Clicked on configure button");
@@ -619,9 +667,22 @@ public class TopicLandingPage extends HelperFunctions {
 	    test.info("Wait for page to load");
 	    HelperFunctions.waitForPageToLoad(3);
 	    HelperFunctions.staticWait(3);*/
+		WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
+	    JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+	     try {
+		    	Thread.sleep(3000);
+		    }catch(InterruptedException e) {
+		    	e.printStackTrace();
+		    }
+		 js.executeScript("arguments[0].click();", pageInfo);
+		    try {
+		    	Thread.sleep(3000);
+		    }catch(InterruptedException e) {
+		    	e.printStackTrace();
+		    }
 	    test.info("Wait for edit button visibility and clicked on it");
-	    WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
-	    wait.until(ExpectedConditions.elementToBeClickable(editButton));
+	    //WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
+	    //wait.until(ExpectedConditions.elementToBeClickable(editButton));
 	    editButton.click();
 	    HelperFunctions.staticWait(3);
 	    test.info("Clicked on key asset edit");
@@ -633,7 +694,7 @@ public class TopicLandingPage extends HelperFunctions {
 	    HelperFunctions.staticWait(3);
 	    test.info("Verified configure button is displayed");
 	    WebDriverWait wait2 = new WebDriverWait(Driver.getDriver(), 10);
-	    wait2.until(ExpectedConditions.elementToBeClickable(configure));
+	    wait2.until(ExpectedConditions.visibilityOf(configure));
 	    Assert.assertTrue(configure.isDisplayed());
 	    HelperFunctions.staticWait(3);
 	    test.info("Clicked on configure button");
@@ -660,9 +721,22 @@ public class TopicLandingPage extends HelperFunctions {
 	    HelperFunctions.staticWait(3);*/
 	    test.info("Click preview button");
 	    WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
-	    WebElement clickableElement = wait.until(ExpectedConditions.elementToBeClickable(previewButton));
-	    clickableElement.click();
-	    //previewButton.click();
+	    JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+	     try {
+		    	Thread.sleep(3000);
+		    }catch(InterruptedException e) {
+		    	e.printStackTrace();
+		    }
+		 js.executeScript("arguments[0].click();", pageInfo);
+		    try {
+		    	Thread.sleep(3000);
+		    }catch(InterruptedException e) {
+		    	e.printStackTrace();
+		    }
+	    //WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
+	    //WebElement clickableElement = wait.until(ExpectedConditions.elementToBeClickable(previewButton));
+	    //clickableElement.click();
+	    previewButton.click();
 	    HelperFunctions.staticWait(2);
 	    test.info("Switch to iframe and get page title");
 	    Driver.getDriver().switchTo().frame(0);
@@ -674,7 +748,7 @@ public class TopicLandingPage extends HelperFunctions {
 	    test.info("Switch back to default content and click page info button and open properties");
 	    Driver.getDriver().switchTo().defaultContent();
 	    HelperFunctions.staticWait(2);
-	    JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+	    //JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
 	    js.executeScript("arguments[0].click();", pageInfo);
 	    HelperFunctions.staticWait(2);
 	    openPro.click();
@@ -694,13 +768,25 @@ public class TopicLandingPage extends HelperFunctions {
 	    titleField.sendKeys(mockTitle);
 	    HelperFunctions.staticWait(2);
 	    saveClose.click();
-	    HelperFunctions.waitForPageToLoad(15);
-	    HelperFunctions.staticWait(3);
+	    HelperFunctions.waitForPageToLoad(30);
+
 	    test.info("Click preview button, switch to iframe, and get page title");
-	    WebDriverWait wait3 = new WebDriverWait(Driver.getDriver(), 10);
-	    WebElement clickableElement3 = wait3.until(ExpectedConditions.elementToBeClickable(previewButton));
-	    clickableElement3.click();
-	    //previewButton.click();
+
+	     try {
+		    	Thread.sleep(3000);
+		    }catch(InterruptedException e) {
+		    	e.printStackTrace();
+		    }
+		 js.executeScript("arguments[0].click();", pageInfo);
+		    try {
+		    	Thread.sleep(3000);
+		    }catch(InterruptedException e) {
+		    	e.printStackTrace();
+		    }
+	    //WebDriverWait wait3 = new WebDriverWait(Driver.getDriver(), 10);
+	    //WebElement clickableElement3 = wait3.until(ExpectedConditions.elementToBeClickable(previewButton));
+	    //clickableElement3.click();
+	    previewButton.click();
 	    HelperFunctions.staticWait(3);
 	    Driver.getDriver().switchTo().frame("ContentFrame");
 	    HelperFunctions.staticWait(3);
@@ -712,10 +798,18 @@ public class TopicLandingPage extends HelperFunctions {
 	    Assert.assertEquals(mockTitle,title3);
 	    test.info("Switch back to default content and click page info button and open properties");
 	    Driver.getDriver().switchTo().defaultContent();
-	    HelperFunctions.staticWait(2);
+	    try {
+	    	Thread.sleep(3000);
+	    }catch(InterruptedException e) {
+	    	e.printStackTrace();
+	    }
 	    JavascriptExecutor js2 = (JavascriptExecutor) Driver.getDriver();
 	    js2.executeScript("arguments[0].click();", pageInfo);
-	    HelperFunctions.staticWait(2);
+	    try {
+	    	Thread.sleep(3000);
+	    }catch(InterruptedException e) {
+	    	e.printStackTrace();
+	    }
 	    openPro.click();
 	    HelperFunctions.waitForPageToLoad(15);
 	    HelperFunctions.staticWait(2);
@@ -736,12 +830,25 @@ public class TopicLandingPage extends HelperFunctions {
 	    test.info("Wait for page to load");
 	    HelperFunctions.waitForPageToLoad(3);
 	    HelperFunctions.staticWait(3);*/
-	    test.info("Wait for edit button visibility and clicked on it");
-	    WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
-	    wait.until(ExpectedConditions.elementToBeClickable(pageInfo));
+		WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
 	    JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
-	    js.executeScript("arguments[0].click();", pageInfo);
-	    HelperFunctions.staticWait(2);
+	     try {
+		    	Thread.sleep(3000);
+		    }catch(InterruptedException e) {
+		    	e.printStackTrace();
+		    }
+		 js.executeScript("arguments[0].click();", pageInfo);
+		    try {
+		    	Thread.sleep(3000);
+		    }catch(InterruptedException e) {
+		    	e.printStackTrace();
+		    }
+	    test.info("Wait for edit button visibility and clicked on it");
+	    //WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
+	    //wait.until(ExpectedConditions.elementToBeClickable(pageInfo));
+	    //JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+	    //js.executeScript("arguments[0].click();", pageInfo);
+	    //HelperFunctions.staticWait(2);
 	    openPro.click();
 	    HelperFunctions.waitForPageToLoad(15);
 	    HelperFunctions.scrollToElement(topicTagField);
@@ -847,12 +954,25 @@ public class TopicLandingPage extends HelperFunctions {
 	   // Driver.getDriver().get(read1.getCellData("VALUE", 9));
 	   // test.info("Wait for page to load");
 	   // HelperFunctions.waitForPageToLoad(10);
-	    test.info("Wait for edit button visibility and clicked on it");
-	    WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
-	    wait.until(ExpectedConditions.elementToBeClickable(pageInfo));
+		WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
 	    JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
-	    js.executeScript("arguments[0].click();", pageInfo);
-	    HelperFunctions.staticWait(2);
+	     try {
+		    	Thread.sleep(3000);
+		    }catch(InterruptedException e) {
+		    	e.printStackTrace();
+		    }
+		 js.executeScript("arguments[0].click();", pageInfo);
+		    try {
+		    	Thread.sleep(3000);
+		    }catch(InterruptedException e) {
+		    	e.printStackTrace();
+		    }
+	    test.info("Wait for edit button visibility and clicked on it");
+	    //WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
+	    //wait.until(ExpectedConditions.elementToBeClickable(pageInfo));
+	    //JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+	    //js.executeScript("arguments[0].click();", pageInfo);
+	    //HelperFunctions.staticWait(2);
 	    openPro.click();
 	    HelperFunctions.waitForPageToLoad(10);
 	    WebDriverWait wait1 = new WebDriverWait(Driver.getDriver(), 10);

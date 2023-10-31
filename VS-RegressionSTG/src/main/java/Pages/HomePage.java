@@ -1633,11 +1633,11 @@ public class HomePage extends HelperFunctions {
 	    wait5.until(ExpectedConditions.visibilityOf(searchButton));
 	    test.info("Clicked on search button");
 	    searchButton.click();
-	    wait5.until(ExpectedConditions.visibilityOf(searchField2));
-	    searchField2.click();
+	    //wait5.until(ExpectedConditions.visibilityOf(searchField2));
+	    //searchField2.click();
 	    //HelperFunctions.staticWait(2);
 	    test.info("Wait for trending search visibility");
-	    WebDriverWait wait6 = new WebDriverWait(Driver.getDriver(), 20);
+	    WebDriverWait wait6 = new WebDriverWait(Driver.getDriver(), 30);
 	    wait6.until(ExpectedConditions.visibilityOf(trendingSearch));
 	    Assert.assertTrue(trendingSearch.isDisplayed());
 	    HelperFunctions.staticWait(2);
