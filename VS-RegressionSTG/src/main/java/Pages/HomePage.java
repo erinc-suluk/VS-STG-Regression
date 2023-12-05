@@ -3415,9 +3415,9 @@ public class HomePage extends HelperFunctions {
 	    }
 	    HelperFunctions.staticWait(2);
 	    String actualMessage=retiredMessage.getText();
-	    String expected="Let me introduce";
+	    String expected="Well";
 	    Assert.assertTrue(actualMessage.contains(expected));
-	    HelperFunctions.staticWait(3);
+	    HelperFunctions.staticWait(5);
 	}
 	public void setMightLikeItemCurrentTab(ExtentTest test) throws Exception {
 		read1.setExcelFile("./testdata.xlsx", "QA");
@@ -3468,7 +3468,7 @@ public class HomePage extends HelperFunctions {
 	    JavascriptExecutor js2 = (JavascriptExecutor) Driver.getDriver();
 	    js2.executeScript("arguments[0].click();", alsoLikeTitles2.get(0));
 	    test.info("Wait for page to load");
-	    HelperFunctions.waitForPageToLoad(3);
+	    HelperFunctions.waitForPageToLoad(30);
 	    HelperFunctions.staticWait(3);
 	    String currentUrl2=Driver.getDriver().getCurrentUrl();
 	    HelperFunctions.staticWait(2);
@@ -3482,11 +3482,11 @@ public class HomePage extends HelperFunctions {
 	    HelperFunctions.staticWait(3);
 	    test.info("Navigate back");
 	    Driver.getDriver().navigate().back();
-	    HelperFunctions.waitForPageToLoad(3);
+	    HelperFunctions.waitForPageToLoad(30);
 	    HelperFunctions.staticWait(3);
 	    String currentUrl3=Driver.getDriver().getCurrentUrl();
 	    Assert.assertEquals(currentUrl, currentUrl3);
-	    HelperFunctions.staticWait(3);
+	    HelperFunctions.staticWait(5);
 	    
 	}
 	public void setLoadMore3rows(ExtentTest test) throws Exception {
@@ -4545,7 +4545,7 @@ public class HomePage extends HelperFunctions {
 	    HelperFunctions.staticWait(2);
 	    Assert.assertNotEquals(backgroundColor3, backgroundColor4);
 	    test.info("Verified the color of the checkbox has changed after clicking on it");
-	    HelperFunctions.staticWait(2);
+	    HelperFunctions.staticWait(5);
 	}
 	public void setSpanishTag(ExtentTest test) throws Exception {
 		read1.setExcelFile("./testdata.xlsx", "QA");

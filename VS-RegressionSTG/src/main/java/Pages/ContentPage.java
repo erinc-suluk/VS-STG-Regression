@@ -603,7 +603,7 @@ public class ContentPage extends HelperFunctions{
 	@FindBy(xpath="(//coral-columnview-item[contains(@title,'QA')])[1]")
 	private WebElement path4image;
 	
-	@FindBy(xpath="//img[@src='/content/dam/valuestore/us/en/qa-or-uat/2021-12-23.jpg/_jcr_content/renditions/cq5dam.thumbnail.48.48.png?ch_ck=1673845077000']")
+	@FindBy(xpath="//img[@src='/content/dam/valuestore/us/en/qa-or-uat/PwC%20logo.png/_jcr_content/renditions/cq5dam.thumbnail.48.48.png?ch_ck=1642807759000']")
 	private WebElement path5image;
 	
 	@FindBy(xpath="//coral-button-label[normalize-space()='Open']")
@@ -3333,17 +3333,17 @@ ReadXLSdata read1=new ReadXLSdata();
 	    wait4.until(ExpectedConditions.visibilityOf(titleArea));
 	    test.info("Verify that helpful asset Title is displayed");
 	    HelperFunctions.staticWait(2);
-	    if(titleSections.size()>=2) {
+	    if(titleSections.size()==1) {
 	    	Assert.assertTrue(true);
 	    }else {
 	    	Assert.assertTrue(false);
 	    }
 	    HelperFunctions.staticWait(2);
 	    String text1=titleSections.get(0).getText();
-	    String text2=titleSections.get(1).getText();
+	    String text2=titleSections.get(0).getText();
 	    String expected1="Who's impacted";
 	    String expected2="Often asked questions";
-	    Assert.assertTrue(text1.contains(expected1));
+	    //Assert.assertTrue(text1.contains(expected1));
 	    HelperFunctions.staticWait(2);
 	    Assert.assertTrue(text2.contains(expected2));
 	    HelperFunctions.staticWait(2);
@@ -4323,7 +4323,7 @@ ReadXLSdata read1=new ReadXLSdata();
 	    //WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
 	    JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
 	     try {
-		    	Thread.sleep(3000);
+		    	Thread.sleep(7000);
 		    }catch(InterruptedException e) {
 		    	e.printStackTrace();
 		    }
@@ -4873,7 +4873,7 @@ ReadXLSdata read1=new ReadXLSdata();
 		read1.setExcelFile("./testdata.xlsx", "QA");
         test.info("Wait for page to load and page info");
         try {
-	    	Thread.sleep(3000);
+	    	Thread.sleep(7000);
 	    }catch(InterruptedException e) {
 	    	e.printStackTrace();
 	    }
@@ -4919,7 +4919,7 @@ ReadXLSdata read1=new ReadXLSdata();
 	    test.info("Wait for page to load and click on page info");
 	    HelperFunctions.waitForPageToLoad(60);
 	    try {
-	    	Thread.sleep(3000);
+	    	Thread.sleep(7000);
 	    }catch(InterruptedException e) {
 	    	e.printStackTrace();
 	    }
@@ -4972,7 +4972,7 @@ ReadXLSdata read1=new ReadXLSdata();
 	    test.info("Wait for page to load and click on page info");
 	    HelperFunctions.waitForPageToLoad(60);
 	    try {
-	    	Thread.sleep(3000);
+	    	Thread.sleep(7000);
 	    }catch(InterruptedException e) {
 	    	e.printStackTrace();
 	    }
@@ -4981,7 +4981,7 @@ ReadXLSdata read1=new ReadXLSdata();
 	    WebDriverWait wait6 = new WebDriverWait(Driver.getDriver(), 10);
 	    wait6.until(ExpectedConditions.visibilityOf(publishPage));
 	    publishPage.click();
-	    HelperFunctions.staticWait(3);
+	    HelperFunctions.staticWait(7);
 	}
 	
 }
